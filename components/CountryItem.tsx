@@ -14,11 +14,16 @@ interface Country {
 
 interface CountryItemProps {
   country: Country;
+  onPress?: () => void;
 }
 
-const CountryItem = memo(function CountryItem({ country }: CountryItemProps) {
+// Componente para mostrar cada país en la lista
+const CountryItem = memo(function CountryItem({ country, onPress }: CountryItemProps) {
   return (
-    <Pressable className="border-b border-gray-200 py-4 px-4 active:bg-gray-100">
+    <Pressable
+      onPress={onPress}
+      className="border-b border-gray-200 py-4 px-4 active:bg-gray-100"
+    >
       <View className="flex-row items-center gap-3">
         <Image
           source={{ uri: country.flags.png }}

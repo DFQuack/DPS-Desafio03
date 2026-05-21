@@ -79,7 +79,17 @@ export default function ContinentScreen() {
       <FlatList
         data={countries}
         keyExtractor={(item) => item.cca2}
-        renderItem={({ item }) => <CountryItem country={item} />}
+        renderItem={({ item }) => (
+          <CountryItem
+            country={item}
+            onPress={() => {
+              router.push({
+                pathname: "/country-details" as any,
+                params: { cca2: item.cca2 },
+              });
+            }}
+          />
+        )}
       />
     </View>
   );
